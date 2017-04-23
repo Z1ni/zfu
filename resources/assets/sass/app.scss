@@ -1,0 +1,118 @@
+$hover-anim-duration: 0.1s;
+
+// TODO: Make control button fade in/out animation work with Firefox and Chrome
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+//@import "variables";
+// Theme variables
+@import "themes/darkly/_variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Bootstrap theme
+@import "themes/darkly/_bootswatch";
+
+// File entry (thumbnail)
+.up-file .up-file-zoomable {
+  margin: 0.5em;
+  transition-duration: $hover-anim-duration;
+  width: 150px;
+  height: 150px;
+  z-index: 999;
+}
+
+.up-file-controls {
+  position: relative;
+  padding: 5px;
+  z-index: 999;
+  opacity: 0;
+  background-color: darken($gray, 5%);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  //height: 0;
+  //overflow: hidden;
+
+  // Uncomment to enable buggy transitions, see below
+  //transition: opacity $hover-anim-duration ease-out;
+}
+
+.up-file-zoomable:hover .up-file-controls {
+  z-index: 999;
+  opacity: 1;
+  //height: auto;
+}
+
+.up-file {
+  position: relative;
+  display: inline-block;
+}
+
+/*.up-file-hidden {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparentize(red, 0.8);
+  z-index: 1000;
+}*/
+.up-file-hidden {
+  background-color: transparentize(red, 0.8);
+  border-radius: 5px;
+}
+
+.up-file .up-file-zoomable:hover {
+  // Commented "position: relative" -> works in Firefox, not in Chrome
+  // Uncommented -> works in Chrome, not in Firefox
+  position: relative;
+  transform: scale(1.1);
+  transition-duration: $hover-anim-duration;
+  border-radius: 5px;
+}
+
+.up-file .up-file-zoomable:hover img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.file-list-panel {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.file-list-pagination-panel {
+  @extend .file-list-panel;
+}
+
+.up-file-info-container {
+  @extend .navbar-fixed-bottom;
+  position: fixed;
+  bottom: 30px;
+  opacity: 0;
+  height: 0;
+  //background-color: $brand-primary;
+  transition: opacity $hover-anim-duration ease-out;
+}
+
+.up-file:hover .up-file-info-container {
+  opacity: 1;
+  height: auto;
+}
+
+.up-file-info {
+  @extend .text-center;
+  background-color: darken($brand-primary, 5%);
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  border-radius: 5px;
+}
+
+footer {
+  height: 30px !important;
+  min-height: 30px !important;
+}

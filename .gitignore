@@ -1,0 +1,14 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/data/*
+/storage/thumb/*
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+.env
+_ide_helper.php
+/*.db
